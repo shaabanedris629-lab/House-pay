@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>خطة سداد الشقة</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#587a8a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="سداد الشقة">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f5f2ea;--card:#fffdf8;--ink:#33413d;--dim:#7a857f;--line:#e4dfd2;--g:#6a9a85;--r:#d58b84;--b:#587a8a;--a:#d9b36c;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1f2624;--card:#29322f;--ink:#e6ebe8;--dim:#a0aba5;--line:#3b4642;--g:#78ad95;--r:#c67d76;--b:#7fa3b3;--a:#cfa95f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1f2624;--card:#29322f;--ink:#e6ebe8;--dim:#a0aba5;--line:#3b4642;--g:#78ad95;--r:#c67d76;--b:#7fa3b3;--a:#cfa95f;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cairo',Tahoma,sans-serif;line-height:1.6;padding:14px}
+.wrap{max-width:980px;margin:auto}
+header{text-align:center;padding:20px 10px 16px;background:linear-gradient(135deg,#587a8a,#6a9a85);color:#fff;border-radius:18px;margin-bottom:6px;box-shadow:0 6px 18px rgba(88,122,138,.25)}
+header h1{margin:0;font-size:1.7rem;color:#fff}
+header p{margin:2px 0;color:#eef4f1;font-size:.92rem}
+.mabrouk{display:inline-block;background:var(--a);color:#fff;border-radius:20px;padding:2px 16px;margin:6px 0;font-weight:700}
+nav{display:flex;gap:6px;margin:10px 0;overflow-x:auto}
+nav button,.btn{font-family:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:8px 14px;cursor:pointer;font-weight:700;white-space:nowrap}
+nav button.on,.btn.pri{background:var(--b);color:#fff;border-color:var(--b)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+.card h3{margin:0 0 8px;font-size:1.05rem;color:var(--b)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.k{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.k small{color:var(--dim);display:block;font-size:.8rem}
+.k b{font-size:1.15rem}
+.alert{border-radius:12px;padding:12px 14px;margin-bottom:12px;font-weight:700;border:1px solid}
+.alert.ok{background:#e3efe9;border-color:var(--g);color:#35594a}
+.alert.warn{background:#f8ecd0;border-color:var(--a);color:#6e5424}
+.alert.bad{background:#f6dedb;border-color:var(--r);color:#7b3a34}
+@media (prefers-color-scheme:dark){.alert.ok{background:#2c3d36;color:#bfe0d1}.alert.warn{background:#41381f;color:#ecd7a4}.alert.bad{background:#472b28;color:#f0c3be}}
+.ind{margin:10px 0}
+.ind .t{display:flex;justify-content:space-between;font-size:.92rem;margin-bottom:3px}
+.bar{height:16px;border-radius:9px;background:var(--r);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--g);transition:width .5s}
+form{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;align-items:end}
+label{font-size:.82rem;color:var(--dim);display:block}
+input,select{width:100%;font-family:inherit;font-size:1rem;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th{color:var(--dim);font-weight:700;background:var(--bg)}
+tr.inst td{background:#f8ecd0;font-weight:700;color:#6e5424}
+@media (prefers-color-scheme:dark){tr.inst td{background:#41381f;color:#ecd7a4}}
+.tag{border-radius:8px;padding:1px 8px;font-size:.8rem;color:#fff}
+.tag.g{background:var(--g)}.tag.r{background:var(--r)}.tag.a{background:var(--a)}
+.x{border:0;background:none;cursor:pointer;font-size:1rem}
+.sec{display:none}.sec.on{display:block}
+.card,.k{box-shadow:0 2px 10px rgba(60,80,70,.08)}.k{border-top:3px solid var(--g)}.k:nth-child(3n+2){border-top-color:var(--b)}.k:nth-child(3n){border-top-color:var(--a)}.k b{font-size:1.25rem}
+.saved{display:inline-block;font-size:.8rem;background:rgba(255,255,255,.22);border-radius:12px;padding:1px 14px;margin-top:6px}
+tr:hover td{background:var(--bg)}.card h3{border-bottom:1px solid var(--line);padding-bottom:6px}
+textarea{width:100%;font-family:inherit;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);direction:ltr;font-size:.8rem}
+nav button:hover,.btn:hover{filter:brightness(.97)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+#slip{display:none}
+.slip{border:2px solid #444;padding:24px;max-width:520px;margin:auto;color:#000;background:#fff}
+.slip h2{text-align:center;margin:0 0 14px}
+.slip p{margin:6px 0;font-size:1.1rem}
+.sig{display:flex;justify-content:space-between;margin-top:36px;font-size:.95rem}
+footer{text-align:center;color:var(--dim);font-size:.85rem;padding:10px}
+@media print{
+ body{background:#fff;color:#000;padding:0}nav,.noprint,header .mabrouk{display:none!important}
+ .sec{display:none!important}
+ body.p-dash #dash,body.p-rec #rec,body.p-sch #sch{display:block!important}
+ body.p-slip .wrap{display:none}body.p-slip #slip{display:block}
+ header{background:none!important;color:#000!important;box-shadow:none!important}header h1,header p{color:#000!important}.saved{display:none}.card,.k{border-color:#bbb;background:#fff;box-shadow:none}.bar,.bar i,.tag,tr.inst td,.alert{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+ <div>بسم الله الرحمن الرحيم</div>
+ <h1>خطة سداد قيمة الشقة</h1>
+ <span class="mabrouk">ألف مبروك 🌿</span>
+ <p>تحت إشراف: أبو أنس وأبو فريدة · البداية: ديسمبر ٢٠٢٦</p>
+ <p>«الله المستعان»</p>
+ <div id="saved" class="saved"></div>
+</header>
+<nav>
+ <button data-t="dash" class="on">لوحة التحكم</button>
+ <button data-t="rec">إيصالات الدفع</button>
+ <button data-t="sch">جدول الأقساط</button>
+</nav>
+
+<section id="dash" class="sec on">
+ <div class="row noprint"><span></span><button class="btn" onclick="pr('dash')">🖨️ طباعة اللوحة</button></div>
+ <div id="alert"></div>
+ <div class="grid" id="kpis"></div>
+ <div class="card" style="margin-top:12px"><h3>مؤشرات الإنجاز (أخضر = مدفوع · أحمر = متبقي)</h3><div id="inds"></div></div>
+ <div class="card"><h3>تفاصيل الفترات</h3><div class="tw"><table id="per"></table></div></div>
+ <p style="color:var(--dim);font-size:.82rem" id="stamp"></p>
+</section>
+
+<section id="rec" class="sec">
+ <div class="card noprint"><h3>تسجيل إيصال دفع جديد</h3>
+  <form id="f">
+   <div><label>الدافع</label><select id="who"><option>شعبان</option><option>وجدي</option></select></div>
+   <div><label>المبلغ (ريال)</label><input id="amt" type="number" min="1" step="any" required></div>
+   <div><label>التاريخ</label><input id="dt" type="date" required></div>
+   <div><label>ملاحظة</label><input id="nt" type="text"></div>
+   <button class="btn pri" type="submit">إضافة الإيصال</button>
+  </form>
+  <p style="color:var(--dim);font-size:.82rem;margin:8px 0 0">المطلوب شهرياً ٥٬٠٠٠ ريال مجتمعَين، وكل إيصال يُخصم تلقائياً من المطلوب شهرياً وسنوياً وكلياً.</p>
+ </div>
+ <div class="row noprint"><span></span><button class="btn" onclick="pr('rec')">🖨️ طباعة الإيصالات</button></div>
+ <div class="card noprint"><h3>🔒 النسخة الاحتياطية</h3><p style="margin:0 0 8px;color:var(--dim);font-size:.85rem">بياناتك تُحفظ تلقائياً على جهازك حتى بعد إغلاق الموبايل وتشغيله. للاحتياط أنشئ نسخة وابعتها لنفسك، وتقدر تلصقها هنا للاسترجاع.</p><textarea id="bkt" rows="3"></textarea><div class="row" style="margin-top:8px"><button class="btn" onclick="bk()">إنشاء ونسخ النسخة</button><button class="btn" onclick="restoreBk()">استرجاع من النسخة</button></div></div>
+ <div class="grid" id="rk" style="margin-bottom:12px"></div>
+ <div class="card"><h3>سجل الإيصالات</h3><div class="tw"><table id="rt"></table></div></div>
+</section>
+
+<section id="sch" class="sec">
+ <div class="row noprint"><span></span><button class="btn" onclick="pr('sch')">🖨️ طباعة الجدول</button></div>
+ <div class="card"><h3>الأقساط (٣٠٬٠٠٠ ريال كل ٦ شهور)</h3><div class="tw"><table id="it"></table></div></div>
+ <div class="card"><h3>الجدول الشهري (٥٬٠٠٠ ريال × ٢٤ شهر)</h3><div class="tw"><table id="mt"></table></div></div>
+</section>
+
+<footer>إجمالي المتبقي ١٢٠٬٠٠٠ ريال على ٢٤ شهر · موعد كل قسط: آخر يوم من الشهر السادس</footer>
+</div>
+<div id="slip"></div>
+
+<script>
+const TOTAL=120000,MONTHLY=5000,INST=30000,N=24,SY=2026,SM=12;
+let R=[];const KEY='debt26';
+try{R=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){R=[]}
+const idb=(m,v)=>new Promise(res=>{try{const q=indexedDB.open('debt26db',1);q.onupgradeneeded=()=>q.result.createObjectStore('s');q.onerror=()=>res(null);q.onsuccess=()=>{try{const s=q.result.transaction('s',m==='set'?'readwrite':'readonly').objectStore('s');const r=m==='set'?s.put(v,KEY):s.get(KEY);r.onsuccess=()=>res(r.result||null);r.onerror=()=>res(null)}catch(e){res(null)}}}catch(e){res(null)}});
+const stamp=()=>{const e=document.getElementById('saved');if(e)e.textContent='✅ البيانات محفوظة على هذا الجهاز · '+R.length+' إيصال'};
+const save=()=>{const s=JSON.stringify(R);try{localStorage.setItem(KEY,s)}catch(e){}idb('set',s);stamp()};
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+idb('get').then(v=>{if(v&&!R.length){try{R=JSON.parse(v);render()}catch(e){}}});
+const $=id=>document.getElementById(id);
+const nf=n=>Math.round(n).toLocaleString('en-US');
+const L='ar-EG-u-nu-latn';
+const fd=d=>d.toLocaleDateString(L,{day:'numeric',month:'long',year:'numeric'});
+const fday=d=>d.toLocaleDateString(L,{weekday:'long'});
+const pd=s=>{const[a,b,c]=s.split('-').map(Number);return new Date(a,b-1,c)};
+const mi=d=>(d.getFullYear()-SY)*12+(d.getMonth()+1-SM);
+const mName=i=>new Date(SY,SM-1+i,1).toLocaleDateString(L,{month:'long',year:'numeric'});
+const due=k=>new Date(SY,SM-1+6*k,0); // آخر يوم في الشهر السادس
+const sum=a=>a.reduce((s,r)=>s+r.amt,0);
+const pctOf=(p,q)=>Math.max(0,Math.min(100,p/q*100));
+const ind=(t,p,q)=>`<div class="ind"><div class="t"><span>${t}</span><b>${pctOf(p,q).toFixed(1)}% · ${nf(p)} / ${nf(q)}</b></div><div class="bar"><i style="width:${pctOf(p,q)}%"></i></div></div>`;
+const today=()=>{const d=new Date();return new Date(d.getFullYear(),d.getMonth(),d.getDate())};
+
+function calc(){
+ const paid=sum(R),rem=Math.max(0,TOTAL-paid),t=today();
+ const ci=Math.max(0,Math.min(N-1,mi(t)));
+ const inM=i=>R.filter(r=>mi(pd(r.date))===i);
+ const mPaid=sum(inM(ci));
+ const hi=Math.floor(ci/6),hPaid=sum(R.filter(r=>{const m=mi(pd(r.date));return Math.floor(Math.max(0,Math.min(N-1,m))/6)===hi}));
+ const yi=Math.floor(ci/12),yPaid=sum(R.filter(r=>{const m=mi(pd(r.date));return Math.floor(Math.max(0,Math.min(N-1,m))/12)===yi}));
+ let k=1;while(k<4&&paid>=INST*k)k++;
+ const done=paid>=TOTAL;
+ return{paid,rem,t,ci,mPaid,hi,hPaid,yi,yPaid,k,done,nextRem:done?0:INST*k-paid,nd:due(k)};
+}
+
+function render(){
+ const c=calc(),sh=sum(R.filter(r=>r.payer==='شعبان')),wj=sum(R.filter(r=>r.payer==='وجدي'));
+ // alert
+ const days=Math.round((c.nd-c.t)/864e5);
+ let a;
+ if(c.done)a=['ok','🎉 الحمد لله، تم سداد كامل المبلغ. ألف مبروك!'];
+ else if(days<0)a=['bad',`⚠️ القسط ${c.k} متأخر ${-days} يوم — موعده ${fday(c.nd)} ${fd(c.nd)} والمتبقي ${nf(c.nextRem)} ريال`];
+ else if(days<=30)a=['warn',`🔔 تنبيه: موعد القسط ${c.k} بعد ${days} يوم — ${fday(c.nd)} ${fd(c.nd)} · المتبقي له ${nf(c.nextRem)} ريال`];
+ else a=['ok',`📅 موعد القسط القادم (${c.k}): ${fday(c.nd)} ${fd(c.nd)} · بعد ${days} يوم · المتبقي له ${nf(c.nextRem)} ريال`];
+ $('alert').innerHTML=`<div class="alert ${a[0]}">${a[1]}</div>`;
+ const K=(t,v)=>`<div class="k"><small>${t}</small><b>${v}</b></div>`;
+ $('kpis').innerHTML=[
+  K('إجمالي المبلغ',nf(TOTAL)+' ريال'),K('إجمالي المدفوع',nf(c.paid)+' ريال'),K('المتبقي الكلي',nf(c.rem)+' ريال'),
+  K('قيمة القسط',nf(INST)+' ريال'),K('موعد القسط القادم',fd(c.nd)),K('المتبقي لأقرب قسط',nf(c.nextRem)+' ريال'),
+  K('إجمالي إيصالات شعبان',nf(sh)+' ريال'),K('إجمالي إيصالات وجدي',nf(wj)+' ريال'),
+  K('المطلوب هذا الشهر',nf(Math.max(0,MONTHLY-c.mPaid))+' ريال'),
+  K('المطلوب هذه السنة',nf(Math.max(0,MONTHLY*12-c.yPaid))+' ريال')].join('');
+ const mp=R.length?0:0;
+ $('inds').innerHTML=ind('النسبة الكلية من المبلغ',c.paid,TOTAL)+ind(`نسبة الشهر (${mName(c.ci)})`,c.mPaid,MONTHLY)+ind(`نسبة الستة شهور (الفترة ${c.hi+1})`,c.hPaid,INST);
+ $('per').innerHTML=`<tr><th>الفترة</th><th>المطلوب</th><th>المدفوع</th><th>المتبقي</th></tr>`+
+  [[`الشهر: ${mName(c.ci)}`,MONTHLY,c.mPaid],[`٦ شهور: الفترة ${c.hi+1}`,INST,c.hPaid],[`السنة ${c.yi+1}`,MONTHLY*12,c.yPaid],['الكلي',TOTAL,c.paid]]
+  .map(x=>`<tr><td>${x[0]}</td><td>${nf(x[1])}</td><td>${nf(x[2])}</td><td>${nf(Math.max(0,x[1]-x[2]))}</td></tr>`).join('');
+ stamp();$('stamp').textContent='تاريخ التقرير: '+fday(c.t)+' '+fd(c.t);
+ // receipts
+ $('rk').innerHTML=K('شعبان',nf(sh)+' ريال')+K('وجدي',nf(wj)+' ريال')+K('الإجمالي',nf(c.paid)+' ريال')+K('المتبقي',nf(c.rem)+' ريال');
+ const rs=[...R].sort((x,y)=>x.date<y.date?-1:1);
+ let run=0;
+ $('rt').innerHTML=`<tr><th>رقم</th><th>اليوم</th><th>التاريخ</th><th>الدافع</th><th>المبلغ</th><th>المتبقي الكلي</th><th>ملاحظة</th><th class="noprint"></th></tr>`+
+  (rs.length?rs.map((r,i)=>{run+=r.amt;const d=pd(r.date);return`<tr><td>${r.id}</td><td>${fday(d)}</td><td>${fd(d)}</td><td>${r.payer}</td><td>${nf(r.amt)}</td><td>${nf(Math.max(0,TOTAL-run))}</td><td>${r.note||''}</td><td class="noprint"><button class="x" title="طباعة الإيصال" onclick="slip(${r.id})">🖨️</button><button class="x" title="حذف" onclick="del(${r.id})">🗑️</button></td></tr>`}).join(''):'<tr><td colspan="8" style="text-align:center;color:var(--dim)">لا توجد إيصالات بعد</td></tr>');
+ // installments
+ let ih=`<tr><th>القسط</th><th>الموعد</th><th>اليوم</th><th>المبلغ</th><th>المدفوع</th><th>المتبقي</th><th>الحالة</th></tr>`;
+ for(let i=1;i<=4;i++){const p=Math.max(0,Math.min(INST,c.paid-INST*(i-1))),d=due(i);
+  const st=p>=INST?['g','مسدد']:(d<c.t?['r','متأخر']:['a','قادم']);
+  ih+=`<tr><td>${i}</td><td>${fd(d)}</td><td>${fday(d)}</td><td>${nf(INST)}</td><td>${nf(p)}</td><td>${nf(INST-p)}</td><td><span class="tag ${st[0]}">${st[1]}</span></td></tr>`}
+ $('it').innerHTML=ih;
+ // monthly
+ let mh=`<tr><th>#</th><th>الشهر</th><th>المطلوب</th><th>شعبان</th><th>وجدي</th><th>المدفوع</th><th>المتبقي</th><th>الحالة</th></tr>`;
+ for(let i=0;i<N;i++){const m=R.filter(r=>mi(pd(r.date))===i),s=sum(m.filter(r=>r.payer==='شعبان')),w=sum(m.filter(r=>r.payer==='وجدي')),p=s+w;
+  const end=new Date(SY,SM+i,0),st=p>=MONTHLY?['g','مكتمل']:(end<c.t?['r','ناقص']:(p>0?['a','جزئي']:['a','قادم']));
+  mh+=`<tr><td>${i+1}</td><td>${mName(i)}</td><td>${nf(MONTHLY)}</td><td>${nf(s)}</td><td>${nf(w)}</td><td>${nf(p)}</td><td>${nf(Math.max(0,MONTHLY-p))}</td><td><span class="tag ${st[0]}">${st[1]}</span></td></tr>`;
+  if((i+1)%6===0)mh+=`<tr class="inst"><td colspan="8">القسط ${(i+1)/6}: ${nf(INST)} ريال — موعده ${fday(due((i+1)/6))} ${fd(due((i+1)/6))}</td></tr>`}
+ $('mt').innerHTML=mh;
+}
+function bk(){const s=JSON.stringify(R);$('bkt').value=s;$('bkt').select();try{navigator.clipboard.writeText(s)}catch(e){}}
+function restoreBk(){try{const a=JSON.parse($('bkt').value);if(!Array.isArray(a))throw 0;if(confirm('استبدال البيانات الحالية بالنسخة؟')){R=a;save();render()}}catch(e){alert('النسخة غير صالحة')}}
+function pr(id){document.body.className='p-'+id;window.print();setTimeout(()=>document.body.className='',500)}
+function slip(id){const r=R.find(x=>x.id===id),d=pd(r.date);
+ $('slip').innerHTML=`<div class="slip"><h2>إيصال دفع رقم ${r.id}</h2><p><b>اليوم:</b> ${fday(d)}</p><p><b>التاريخ:</b> ${fd(d)}</p><p><b>الدافع:</b> ${r.payer}</p><p><b>المبلغ:</b> ${nf(r.amt)} ريال</p>${r.note?`<p><b>ملاحظة:</b> ${r.note}</p>`:''}<p style="font-size:.9rem">قسط شقة — خطة السداد من ديسمبر ٢٠٢٦</p><div class="sig"><span>توقيع الدافع: ________</span><span>المشرف: ________</span></div></div>`;
+ pr('slip')}
+function del(id){if(confirm('حذف هذا الإيصال؟')){R=R.filter(r=>r.id!==id);save();render()}}
+$('f').addEventListener('submit',e=>{e.preventDefault();
+ const amt=parseFloat($('amt').value);if(!(amt>0)||!$('dt').value)return;
+ R.push({id:(R.reduce((m,r)=>Math.max(m,r.id),0)+1),payer:$('who').value,amt,date:$('dt').value,note:$('nt').value.trim()});
+ save();$('amt').value='';$('nt').value='';render()});
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));
+ document.querySelectorAll('.sec').forEach(s=>s.classList.toggle('on',s.id===b.dataset.t))});
+const t0=today();$('dt').value=t0.getFullYear()+'-'+String(t0.getMonth()+1).padStart(2,'0')+'-'+String(t0.getDate()).padStart(2,'0');
+render();
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}
+</script>
+</body>
+</html>
